@@ -1,0 +1,75 @@
+#คำนวณพื้นที่
+
+เราต้องการให้ Steve ขุดพื้นที่ให้เป็นสี่เหลี่ยมพื้นผ้า ได้ที่ 1 block จะเท่ากับ 1 ตร.ม 
+โดยเราจะรับค่าความยาว ความกว้าง และความสูงเป็นจำนวนจริงเพื่อให้
+Steve ทำการขุด block ตามที่เราต้องการ จากนั้นจงหาว่า Steve จะใช้เวลากี่นาทีในการขุด block จนเสร็จ 
+โดยคิดเวลาตอนขุด 1 block จะเท่ากับ 5 วินาที และเศษของเวลาจะปัดขึ้น
+
+ตัวอย่าง Input/Ouput
+
+<pre class="output">
+Enter width: <em>15</em>
+Enter length: <em>15</em>
+Enter depth: <em>15</em>
+Steve will take 5.0 minutes.
+</pre>
+
+::elab:begincode
+import math
+
+{{w = float(input("Enter width: "))                                     }}
+{{l = float(input("Enter length: "))                                    }}
+{{d = float(input("Enter depth: "))                                     }}
+{{area = w*l*d                                                          }}
+{{result = area*5                                                       }}
+{{print("Steve will take {:d} minutes.".format(math.ceil(result/60)))   }}
+::elab:endcode
+
+::elab:begintest
+15
+15
+15
+::elab:endtest
+
+::elab:begintest
+15.0
+15.0
+15.0
+::elab:endtest
+
+::elab:begintest
+2.00
+3.00
+4.00
+::elab:endtest
+
+::elab:begintest
+0.15
+0.15
+0.15
+::elab:endtest
+
+::elab:begintest
+0.15
+15
+0.15
+::elab:endtest
+
+::elab:begintest
+15
+0.15
+15
+::elab:endtest
+
+::elab:begintest
+15
+15
+0.15
+::elab:endtest
+
+::elab:begintest
+0.1
+0.02
+0.003
+::elab:endtest
+

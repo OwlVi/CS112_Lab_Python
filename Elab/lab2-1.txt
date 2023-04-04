@@ -1,0 +1,54 @@
+#เงินในบัญชีธนาคาร
+
+จงเขียนโปรแกรมที่รับค่าเงินในบัญชี เงินฝาก และถอนเงินเป็นจำนวนจริง
+โดยให้แสดงผลเป็นทศนิยม 2 ตำแหน่ง
+
+ตัวอย่าง Input/Ouput
+
+<pre class="output">
+Enter balance: <em>15</em>
+Enter deposit: <em>15</em>
+Enter withdraw: <em>15</em>
+-----------------------My Bank-----------------------
+   Date   |   WITHDRAW   |   DEPOSIT   |   BALANCE   |
+ 15/03/23 |          0.00|       +15.00|        30.00|
+          |        -15.00|        +0.00|        15.00|
+</pre>
+
+::elab:begincode
+import math
+
+{{balance  = float(input("Enter Balance: "))                                                 }}                                   
+{{deposit  = float(input("Enter Deposit: "))                                                 }}                                   
+{{withdraw = float(input("Enter Withdraw: "))                                                }}                                   
+{{print("{:^50s}".format("-----------------------My Bank-----------------------"))           }}                           
+{{print("{:^10s}|{:^14s}|{:^13s}|{:^13s}|".format("Date","WITHDRAW","DEPOSIT","BALANCE"))    }}                                                                               
+{{balance += deposit                                                                         }}           
+{{print("{:^10s}|{:-14.2f}|{:+13.2f}|{:-13.2f}|".format("11/03/23",0*(-1),deposit,balance))  }}                                                                               
+{{balance -= withdraw                                                                        }}           
+{{print("{:^10s}|{:-14.2f}|{:+13.2f}|{:-13.2f}|".format("",withdraw*(-1),0*(-1),balance))    }}  
+::elab:endcode
+
+::elab:begintest
+15
+15
+15
+::elab:endtest
+
+::elab:begintest
+15.0
+25.0
+50.0
+::elab:endtest
+
+::elab:begintest
+0.0
+1500
+1500
+::elab:endtest
+
+::elab:begintest
+-150.0
+50.0
+50.0
+::elab:endtest

@@ -1,0 +1,76 @@
+# ร้านเติมเกม
+
+ร้านเติมเกมแห่งนึง อยากจัดทำโปรโมชั่นในการเติมเกมดังนี้
+เมื่อเติมเกมมากกว่า 300 ขึ้นไป ได้ส่วนลด 5% 
+เมื่อเติมเกมตั้งแต่ 750 ขึ้นไป ได้ส่วนลด 10%
+เมื่อเติมเกมตั้งแต่ 1500 ขึ้นไป ได้ส่วนลด 20%
+และเมื่อเติมเกมมากกว่า 3000 ขึ้นไป ได้ส่วนลด 35%
+ร้านเติมเกมแห่งนี้ต้องการโปรแกรมที่สามารถคำนวณส่วนลดหลังจากที่เติมกับทางร้านเพื่อใช้ในการบอกกับลูกค้า
+
+ตัวอย่าง Input/Ouput
+
+<pre class="output">
+
+Enter buying amount: <em>300</em>
+Amount due after discount is 300.00 baht.
+
+</pre>
+
+::elab:begincode
+#input 
+{{money = float(input("Enter buying amount: "))                                           }}
+#process
+{{if money > 3000 :                                                                       }}
+{{    print("Amount due after discount is {:.2f} baht.".format(money-(money*0.35)))       }}
+{{elif money >= 1500:                                                                     }}
+{{    print("Amount due after discount is {:.2f} baht.".format(money-(money*0.20)))       }}
+{{elif money >= 750:                                                                      }}
+{{    print("Amount due after discount is {:.2f} baht.".format(money-(money*0.1)))        }}
+{{elif money > 300:                                                                       }}
+{{    print("Amount due after discount is {:.2f} baht.".format(money-(money*0.05)))       }}
+{{else:                                                                                   }}
+{{    print("Amount due after discount is {:.2f} baht.".format(money))                    }}
+
+::elab:endcode
+
+::elab:begintest
+-100
+::elab:endtest
+
+::elab:begintest
+100.0
+::elab:endtest
+
+::elab:begintest
+299
+::elab:endtest
+
+::elab:begintest
+300.0
+::elab:endtest
+
+::elab:begintest
+749
+::elab:endtest
+
+::elab:begintest
+750.0
+::elab:endtest
+
+::elab:begintest
+1499
+::elab:endtest
+
+::elab:begintest
+1500.0
+::elab:endtest
+
+::elab:begintest
+2999.0
+::elab:endtest
+
+::elab:begintest
+3000.0
+::elab:endtest
+
+
