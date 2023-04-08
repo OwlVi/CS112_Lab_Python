@@ -1,10 +1,124 @@
 # ทำบัญชีสักหน่อย
+ลองสร้างโปรแกรมที่มีการกำหนดค่าให้ balance สามารถรับค่าตัวเลขเป็นจำนวจริงและค่าเริ่มต้นเป็น 0
+จากนั้นให้มีตัวเลือกระหว่าง deposit และ withdrawเป็นการฝากและถอนจาก balance
+ส่วน exit ให้เป็นการออกจากโปรแกรม 
+กำหนดว่า balance deposit และ withdraw ต้องไม่เป็นติดลบมิฉะนั้นให้ออกจากโปรแกรมทันที
+หลังจากออกจากโปรแกรมให้พิม balance ออกมา
 
-ลองสร้างโปรแกรมที่มีการกำหนดค่าให้ balance สามารถรับค่าตัวเลขโดยเป็นจำนวจริงเท่านั้น จากให้
-มีตัวเลือกระหว่าง deposit และ withdraw เป็นการฝากและถอนจาก balance 
-โดยกำหนดว่า balance ต้องไม่เป็นติดลบมิฉะนั้นให้ออกจากโปรแกรมทันที
-ส่วน deposit และ withdraw ต้องไม่ติดลบและจะทำให้โปรแกมจบลงทันทีเช่นกัน
-หลังจากจบโปรแกรมให้พิม balance ออกมา
+ตัวอย่าง Input/Ouput
+
+<pre class="output">
+
+Enter Balance: <em>-20<em>
+My Balance: 0.00
+
+</pre>
+
+<pre class="output">
+
+Enter Balance: <em>100</em>
+ Deposit (1) / Withdraw (2) / Exit (3)
+: <em>2</em>
+Enter Withdraw: <em>120</em>
+Cant not withdraw
+ Deposit (1) / Withdraw (2) / Exit (3)
+: <em>2</em>
+Enter Withdraw: <em>100</em>
+ Deposit (1) / Withdraw (2) / Exit (3)
+: <em>3</em>
+My Balance: 0.00
+
+</pre>
+
+<pre class="output">
+
+Enter Balance: <em>0</em>
+ Deposit (1) / Withdraw (2) / Exit (3) 
+: <em>Deposit</em>
+Enter Deposit: <em>100</em>
+ Deposit (1) / Withdraw (2) / Exit (3)
+: <em>3</em>
+My Balance: 100.00
+
+</pre>
+
+::elab:begincode
+{{balance  = float(input("Enter Balance: "))                                }}
+{{while (balance >= 0):                                                     }}
+{{    select = input(" Deposit (1) / Withdraw (2) / Exit (3) \n: ")         }}
+{{    if select == '1' or select == "Deposit" or select == "deposit":       }}
+{{        deposit  = float(input("Enter Deposit: "))                        }}
+{{        if deposit < 0 :                                                  }}
+{{            print("Cant not deposit")                                     }}
+{{            break                                                         }}
+{{        balance += deposit                                                }}
+{{    elif select == '2' or select == "Withdraw" or select == "withdraw":   }}
+{{        withdraw = float(input("Enter Withdraw: "))                       }}
+{{        if withdraw < 0 or balance <= withdraw:                           }}
+{{            print("Cant not withdraw")                                    }}
+{{            break                                                         }}
+{{        balance -= withdraw                                               }}
+{{    else:                                                                 }}
+{{        break                                                             }}
+{{if balance < 0 :                                                          }}
+{{    print("My Balance: {:.2f}".format(0))                                 }}
+{{else:                                                                     }}
+{{    print("My Balance: {:.2f}".format(balance))                           }}
+::elab:endcode
 
 
 
+::elab:begintest
+-20
+::elab:endtest
+
+::elab:begintest
+100
+2
+120
+2
+100
+3
+::elab:endtest
+
+::elab:begintest
+0
+Deposit
+100
+3
+::elab:endtest
+
+::elab:begintest
+0
+deposit
+100
+3
+::elab:endtest
+
+::elab:begintest
+0
+1
+-100
+3
+::elab:endtest
+
+::elab:begintest
+300
+Withdraw
+100
+3
+::elab:endtest
+
+::elab:begintest
+200
+withdraw
+100
+3
+::elab:endtest
+
+::elab:begintest
+200
+withdraw
+-100
+3
+::elab:endtest

@@ -6,14 +6,18 @@ while (balance >= 0):
         deposit  = float(input("Enter Deposit: "))
         if deposit < 0 :
             print("Cant not deposit")
-            break
+            continue
         balance += deposit
     elif select == '2' or select == "Withdraw" or select == "withdraw":
         withdraw = float(input("Enter Withdraw: "))
-        if withdraw < 0:
+        if withdraw < 0 or balance < withdraw:
             print("Cant not withdraw")
-            break
+            continue
         balance -= withdraw
     else:
         break
-print("My Balance: {:.2f}".format(balance))
+
+if balance < 0 :
+    print("My Balance: {:.2f}".format(0))
+else:
+    print("My Balance: {:.2f}".format(balance))
